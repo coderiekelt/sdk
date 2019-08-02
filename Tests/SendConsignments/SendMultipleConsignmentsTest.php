@@ -13,24 +13,25 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendOneConsignmentTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
 use MyParcelNL\Sdk\src\Model\MyParcelRequest;
-
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendMultipleConsignmentsTest
  * @package MyParcelNL\Sdk\tests\SendConsignmentsTest
  */
-class SendMultipleConsignmentsTest extends \PHPUnit\Framework\TestCase
+class SendMultipleConsignmentsTest extends TestCase
 {
 
     /**
      * Create multiple shipments with createConcepts()
-     * @throws \Exception
+     * @throws Exception
      */
     public function testSendMultipleConsignments()
     {

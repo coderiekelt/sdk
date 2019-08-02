@@ -13,26 +13,29 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendOneConsignmentTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Concerns\HasDebugLabels;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendMorningShipmentTest
  * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
  */
-class SendMorningShipmentTest extends \PHPUnit\Framework\TestCase
+class SendMorningShipmentTest extends TestCase
 {
     use HasDebugLabels;
 
     /**
      * Test one shipment with createConcepts()
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @throws MissingFieldException
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {

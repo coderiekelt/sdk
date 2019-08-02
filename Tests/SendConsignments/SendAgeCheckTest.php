@@ -11,26 +11,29 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendAgeCheckTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
-
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendAgeCheckTest
  * @package MyParcelNL\Sdk\tests\SendAgeCheckTest
  */
-class SendAgeCheckTest extends \PHPUnit\Framework\TestCase
+class SendAgeCheckTest extends TestCase
 {
 
     /**
      * @return $this
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @throws ApiException
+     * @throws MissingFieldException
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {

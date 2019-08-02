@@ -13,30 +13,36 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendOneConsignmentTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use DateTime;
+use Exception;
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Concerns\HasDebugLabels;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use MyParcelNL\Sdk\tests\SendConsignments;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendPickupFromCheckoutDataTest
  * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
  */
-class SendPickupFromCheckoutDataTest extends \PHPUnit\Framework\TestCase
+class SendPickupFromCheckoutDataTest extends TestCase
 {
     use HasDebugLabels;
 
     /**
      * Test one shipment with createConcepts()
-     * @return \MyParcelNL\Sdk\tests\SendConsignments\SendOneConsignmentTest\SendPickupFromCheckoutDataTest
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @throws ApiException
+     * @throws MissingFieldException
+     * @return SendConsignments\SendPickupFromCheckoutDataTest;
+     * @throws Exception
      */
-    public function testSendOneConsignment()
+    public function testSendOneConsignment(): SendPickupFromCheckoutDataTest
     {
         if (getenv('API_KEY') == null) {
             echo "\033[31m Set MyParcel API-key in 'Environment variables' before running UnitTest. Example: API_KEY=f8912fb260639db3b1ceaef2730a4b0643ff0c31. PhpStorm example: http://take.ms/sgpgU5\n\033[0m";
@@ -217,12 +223,12 @@ class SendPickupFromCheckoutDataTest extends \PHPUnit\Framework\TestCase
      * Data for the test
      *
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     public function additionProvider()
     {
 
-        $datetime = new \DateTime();
+        $datetime = new DateTime();
         $datetime->modify('+1 day');
         $delivery_date = $datetime->format('Y\-m\-d\ h:i:s');
 

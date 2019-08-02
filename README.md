@@ -1,6 +1,9 @@
 # MyParcel SDK
 This SDK connects to the MyParcel API using PHP.
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/myparcelnl/sdk/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/myparcelnl/sdk/?branch=develop)
+[![Build Status](https://scrutinizer-ci.com/g/myparcelnl/sdk/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/myparcelnl/sdk/build-status/develop)
+
 ## Contents
 
 - [Contents](#contents)

@@ -11,21 +11,29 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendMultiReferenceIdentifierConsignmentTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use DateTime;
+use Exception;
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
-class SendEqualReferenceIdentifierTest extends \PHPUnit\Framework\TestCase
+class SendEqualReferenceIdentifierTest extends TestCase
 {
 
+    /**
+     * @var int
+     */
     private $timestamp;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->timestamp = (new \DateTime())->getTimestamp();
+        $this->timestamp = (new DateTime())->getTimestamp();
     }
 
     /**
@@ -33,9 +41,9 @@ class SendEqualReferenceIdentifierTest extends \PHPUnit\Framework\TestCase
      *
      * @param array $consignmentTest
      *
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @throws ApiException
+     * @throws MissingFieldException
+     * @throws Exception
      *
      * @dataProvider additionProvider()
      */

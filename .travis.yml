@@ -31,4 +31,4 @@ install:
 script:
   - composer validate --strict
   - find src Tests -name '*.php' | xargs -n 1 -P4 php -l
-  - vendor/bin/phpunit Tests
+  - vendor/bin/phpunit Tests --coverage-html build/coverage-report

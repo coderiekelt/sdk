@@ -13,26 +13,28 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendOneInternationalConsignmentTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
 use MyParcelNL\Sdk\src\Model\MyParcelCustomsItem;
 use MyParcelNL\Sdk\src\Concerns\HasDebugLabels;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendOneInternationalConsignmentTest
  * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
  */
-class SendLargeFormatTest extends \PHPUnit\Framework\TestCase
+class SendLargeFormatTest extends TestCase
 {
     use HasDebugLabels;
 
     /**
      * Test one shipment with createConcepts()
-     * @throws \Exception
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {

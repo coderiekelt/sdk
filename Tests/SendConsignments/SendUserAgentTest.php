@@ -13,24 +13,28 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\src\tests\SendConsignments;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendPickupFromCheckoutDataTest
  */
-class SendUserAgentTest extends \PHPUnit\Framework\TestCase
+class SendUserAgentTest extends TestCase
 {
     /**
      * Test one shipment with createConcepts()
-     * @return \MyParcelNL\Sdk\src\tests\SendConsignments\SendUserAgentTest
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @return SendUserAgentTest
+     * @throws ApiException
+     * @throws MissingFieldException
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {

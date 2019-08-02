@@ -15,23 +15,27 @@
 
 namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendMailboxConsignmentTest
  * @package MyParcelNL\Sdk\tests\SendMailboxConsignmentTest
  */
-class SendMailboxConsignmentTest extends \PHPUnit\Framework\TestCase
+class SendMailboxConsignmentTest extends TestCase
 {
 
     /**
      * Test one shipment with createConcepts()
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \Exception
+     * @throws MissingFieldException
+     * @throws ApiException
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {

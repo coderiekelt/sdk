@@ -1,26 +1,29 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendDigitalStampTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Concerns\HasDebugLabels;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendDigitalStampTest
+ *
  * @package MyParcelNL\Sdk\tests\SendDigitalStampTest
  */
-class SendDigitalStampTest extends \PHPUnit\Framework\TestCase
+class SendDigitalStampTest extends TestCase
 {
     use HasDebugLabels;
 
     /**
      * Test one shipment with createConcepts()
-     * @throws \Exception
      *
      * @return void
+     * @throws Exception
      */
     public function testSendOneConsignment(): void
     {
@@ -30,21 +33,18 @@ class SendDigitalStampTest extends \PHPUnit\Framework\TestCase
         }
 
         foreach ($this->additionProvider() as $consignmentTest) {
-
             $myParcelCollection = new MyParcelCollection();
 
-            $consignment = (ConsignmentFactory::createByCarrierId($consignmentTest['carrier_id']))
-                ->setApiKey($consignmentTest['api_key'])
-                ->setPackageType(AbstractConsignment::PACKAGE_TYPE_DIGITAL_STAMP)
-                ->setCountry($consignmentTest['cc'])
-                ->setPerson($consignmentTest['person'])
-                ->setCompany($consignmentTest['company'])
-                ->setFullStreet($consignmentTest['full_street'])
-                ->setPostalCode($consignmentTest['postal_code'])
-                ->setCity($consignmentTest['city'])
-                ->setEmail('your_email@test.nl')
-                ->setPhone($consignmentTest['phone'])
-                ->setTotalWeight($consignmentTest['weight']);
+            $consignment =
+                (ConsignmentFactory::createByCarrierId($consignmentTest['carrier_id']))->setApiKey(
+                        $consignmentTest['api_key']
+                    )->setPackageType(AbstractConsignment::PACKAGE_TYPE_DIGITAL_STAMP)->setCountry(
+                        $consignmentTest['cc']
+                    )->setPerson($consignmentTest['person'])->setCompany($consignmentTest['company'])->setFullStreet(
+                        $consignmentTest['full_street']
+                    )->setPostalCode($consignmentTest['postal_code'])->setCity($consignmentTest['city'])->setEmail(
+                        'your_email@test.nl'
+                    )->setPhone($consignmentTest['phone'])->setTotalWeight($consignmentTest['weight']);
 
             if (key_exists('package_type', $consignmentTest)) {
                 $consignment->setPackageType($consignmentTest['package_type']);
@@ -54,11 +54,13 @@ class SendDigitalStampTest extends \PHPUnit\Framework\TestCase
                 $consignment->setLabelDescription($consignmentTest['label_description']);
             }
 
-            $myParcelCollection
-                ->addConsignment($consignment)
-                ->setLinkOfLabels();
+            $myParcelCollection->addConsignment($consignment)->setLinkOfLabels();
 
-            $this->assertEquals(true, preg_match("#^https://api.myparcel.nl/pdfs#", $myParcelCollection->getLinkOfLabels()), 'Can\'t get link of PDF');
+            $this->assertEquals(
+                true,
+                preg_match("#^https://api.myparcel.nl/pdfs#", $myParcelCollection->getLinkOfLabels()),
+                'Can\'t get link of PDF'
+            );
 
             $this->debugLinkOfLabels($myParcelCollection, 'digital stamp shipment');
         }
@@ -88,7 +90,7 @@ class SendDigitalStampTest extends \PHPUnit\Framework\TestCase
                 'phone'             => '123456',
                 'package_type'      => AbstractConsignment::PACKAGE_TYPE_DIGITAL_STAMP,
                 'label_description' => 112345,
-                'weight'            => 76
+                'weight'            => 76,
             ],
             [
                 'api_key'           => getenv('API_KEY'),
@@ -106,7 +108,7 @@ class SendDigitalStampTest extends \PHPUnit\Framework\TestCase
                 'phone'             => '123456',
                 'package_type'      => AbstractConsignment::PACKAGE_TYPE_DIGITAL_STAMP,
                 'label_description' => 112345,
-                'weight'            => 1999
+                'weight'            => 1999,
             ],
             [
                 'api_key'           => getenv('API_KEY'),
@@ -124,7 +126,7 @@ class SendDigitalStampTest extends \PHPUnit\Framework\TestCase
                 'phone'             => '123456',
                 'package_type'      => AbstractConsignment::PACKAGE_TYPE_DIGITAL_STAMP,
                 'label_description' => 112345,
-                'weight'            => 0
+                'weight'            => 0,
 
             ],
         ];

@@ -13,31 +13,33 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendMultiReferenceIdentifierConsignmentTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use DateTime;
+use Exception;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
-
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendOneReferenceIdentifierConsignmentTest
  * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
  */
-class SendMultiReferenceIdentifierConsignmentTest extends \PHPUnit\Framework\TestCase
+class SendMultiReferenceIdentifierConsignmentTest extends TestCase
 {
 
     private $timestamp;
 
     public function setUp()
     {
-        $this->timestamp = (new \DateTime())->getTimestamp();
+        $this->timestamp = (new DateTime())->getTimestamp();
     }
 
     /**
      * Test one shipment with createConcepts()
-     * @throws \Exception
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {

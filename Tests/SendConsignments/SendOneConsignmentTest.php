@@ -11,27 +11,32 @@
  * @since       File available since Release v0.1.0
  */
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendOneConsignmentTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\BpostConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\DPDConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use MyParcelNL\Sdk\tests\SendConsignments;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendOneConsignmentTest
  * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
  */
-class SendOneConsignmentTest extends \PHPUnit\Framework\TestCase
+class SendOneConsignmentTest extends TestCase
 {
 
     /**
-     * @return \MyParcelNL\Sdk\tests\SendConsignments\SendOneConsignmentTest\SendOneConsignmentTest
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @return SendConsignments;
+     * @throws ApiException
+     * @throws MissingFieldException
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {
